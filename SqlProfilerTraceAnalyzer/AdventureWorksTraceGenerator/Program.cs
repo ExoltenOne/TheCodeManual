@@ -14,10 +14,10 @@ namespace AdventureWorksTraceGenerator
 
         static void Main()
         {
-            GetStoreProcedures(1000).ToList().Shuffle().ToList().ForEach(sp => ExecuteStoreProcedure(sp.Name, sp.Parameters));
+            GetStoreProcedures(10).ToList().Shuffle().ToList().ForEach(sp => ExecuteStoreProcedure(sp.Name, sp.Parameters));
         }
 
-        private static void ExecuteStoreProcedure(string sprocName, IList<SqlParameterSet> parameters)
+        private static void ExecuteStoreProcedure(string sprocName, IEnumerable<SqlParameterSet> parameters)
         {
             using (var con = new SqlConnection(ConnectionString))
             {

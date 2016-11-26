@@ -7,6 +7,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SqlProfilerTraceAnalyzer", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventureWorksTraceGenerator", "SqlProfilerTraceAnalyzer\AdventureWorksTraceGenerator\AdventureWorksTraceGenerator.csproj", "{C088EDCB-E3AB-4127-8B6E-3BEAF941E7E9}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "SqlProfilerTraceAnalyzer", "SqlProfilerTraceAnalyzer\SqlProfilerTraceAnalyzer\SqlProfilerTraceAnalyzer.fsproj", "{D976F218-79FB-4BD0-B46C-55D4B257FD64}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,11 +19,16 @@ Global
 		{C088EDCB-E3AB-4127-8B6E-3BEAF941E7E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C088EDCB-E3AB-4127-8B6E-3BEAF941E7E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C088EDCB-E3AB-4127-8B6E-3BEAF941E7E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D976F218-79FB-4BD0-B46C-55D4B257FD64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D976F218-79FB-4BD0-B46C-55D4B257FD64}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D976F218-79FB-4BD0-B46C-55D4B257FD64}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D976F218-79FB-4BD0-B46C-55D4B257FD64}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{C088EDCB-E3AB-4127-8B6E-3BEAF941E7E9} = {DD8C9A27-C3A8-4AFE-AF64-A8199A514303}
+		{D976F218-79FB-4BD0-B46C-55D4B257FD64} = {DD8C9A27-C3A8-4AFE-AF64-A8199A514303}
 	EndGlobalSection
 EndGlobal
