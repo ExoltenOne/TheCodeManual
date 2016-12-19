@@ -1,60 +1,53 @@
 ﻿open System
 open System.Text.RegularExpressions
 open FSharp.Data
- 
-type Trace = XmlProvider<"trace.xml">
- 
+
+open Argu
+
+open SqlProfilerTraceVisualiser.ChartVisualiser
+open SqlProfilerTraceVisualiser.ConsoleVisualiser
+open SqlProfilerTraceVisualiser.FileVisualiser
+
+type Arguments =
+    | TraceFile of path:string
+    | Console
+    | File
+    | Chart of typeChart:TypeChart
+
+with
+    interface IArgParserTemplate with
+        member s.Usage =
+            match s with
+            | TraceFile _ -> "specify a trace file"
+            | Console _ -> "set output to console"
+            | Chart _ -> "set output to chart"
+            | File _ -> "set output to file"
+
 [<EntryPoint>]
 let main argv = 
    
-    let extractOptionValue columns id = 
-        let result = Array.tryFind (fun (y:Trace.Column) -> y.Id = id) columns
-        Option.map (fun (x:Trace.Column) -> x.String) result
- 
-    let trace = Trace.Load "trace.xml"
- 
-    let getDuration (durationOption: Option<string> option) =
-        match durationOption with
-        | Some x ->
-                    match x with
-                    | Some value -> int value 
-                    | None -> 0
-        | None -> 0
- 
-    let removeSquareBraces (name:string) = 
-        name.Replace("[", String.Empty).Replace("]", String.Empty)
- 
-    let extractSprocName execution =
-        let regex = new Regex(".*exec (?<sproc>\S*)");
-        let result = regex.Match execution
-        let group = result.Groups.["sproc"]
-        if group.Success then Some(removeSquareBraces group.Value) else None
+    let parser = ArgumentParser.Create<Arguments>()
+    let arg = parser.ParseCommandLine argv
 
-    let getName (nameOption: Option<string> option) =
-        match nameOption with
-        | Some x ->
-                    match x with
-                    | Some value -> extractSprocName value
-                    | None -> None
-        | None -> None
- 
-    let result = trace.Events
-                    |> Array.map (fun x -> x.Columns)
-                    |> Array.map (fun x -> (extractOptionValue x 1, extractOptionValue x 13))
-                    |> Array.map (fun (nameColumn, durationColumn) -> (getName nameColumn, getDuration durationColumn))
-                    |> Array.filter (fun (name, _) -> name.IsSome)
-                    |> Array.map (fun (name,duration) -> (Option.get name, duration))
-                    |> Array.toSeq
-                    |> Seq.groupBy (fun (name, duration) -> name)
-                    |> Seq.map (fun (name, entries) -> 
-                                                        let count = Seq.length entries
-                                                        let sum = Seq.sumBy (fun (_,duration) -> duration) entries
-                                                        let avg = Seq.averageBy (fun (_,duration) -> float duration) entries
-                                                        (name, count, sum, avg))
-                    |> Seq.sortBy (fun (name,_,_,_) -> name)
-                    |> Seq.map(fun (name,count,sum,avg) -> sprintf "\n%-60s - Count: %-5d - Sum: %-7d - Avg: %-5f" name count sum avg)
-                    |> Seq.reduce (sprintf "%s%s")
- 
- 
-    printfn "%A" result
+    let arguments = arg.GetAllResults()
+
+    let file = arg.GetResult (<@ TraceFile @>, defaultValue = "trace.xml")
+    let result = analyze file
+
+    let matchResult argument result =
+        match argument with
+        | Arguments.TraceFile _ -> ()
+        | Arguments.Console -> printToConsole result
+        | Arguments.File -> printToFile result
+        | Arguments.Chart typeChart -> printToChart result typeChart
+
+    let rec matchResults arguments =
+                    match arguments with
+                    | head :: tail -> 
+                                        matchResult head result
+                                        matchResults tail
+                    | [] -> ()
+
+    matchResults arguments
+
     0 // return an integer exit code

@@ -9,6 +9,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventureWorksTraceGenerato
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "SqlProfilerTraceAnalyzer", "SqlProfilerTraceAnalyzer\SqlProfilerTraceAnalyzer\SqlProfilerTraceAnalyzer.fsproj", "{D976F218-79FB-4BD0-B46C-55D4B257FD64}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "SqlProfilerTraceVisualiser", "SqlProfilerTraceAnalyzer\SqlProfilerTraceVisualiser\SqlProfilerTraceVisualiser.fsproj", "{51C29B75-3060-4CF4-8AEA-870D6A33A5A5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HowToTraceYourSql", "HowToTraceYourSql", "{70EB10F2-45FA-479E-BD55-E950CA96C4C3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventureWorksTraceGenerator", "SqlProfilerTraceAnalyzer\HowToTraceYourSql\AdventureWorksTraceGenerator\AdventureWorksTraceGenerator.csproj", "{9B6E0350-4C59-4BC5-A9FD-261FD99ADAD0}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "SqlProfilerTraceAnalyzer", "SqlProfilerTraceAnalyzer\HowToTraceYourSql\SqlProfilerTraceAnalyzer\SqlProfilerTraceAnalyzer.fsproj", "{8D13AB14-12FF-457E-9877-112D952347B8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,6 +31,18 @@ Global
 		{D976F218-79FB-4BD0-B46C-55D4B257FD64}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D976F218-79FB-4BD0-B46C-55D4B257FD64}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D976F218-79FB-4BD0-B46C-55D4B257FD64}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51C29B75-3060-4CF4-8AEA-870D6A33A5A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51C29B75-3060-4CF4-8AEA-870D6A33A5A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51C29B75-3060-4CF4-8AEA-870D6A33A5A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51C29B75-3060-4CF4-8AEA-870D6A33A5A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B6E0350-4C59-4BC5-A9FD-261FD99ADAD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B6E0350-4C59-4BC5-A9FD-261FD99ADAD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B6E0350-4C59-4BC5-A9FD-261FD99ADAD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B6E0350-4C59-4BC5-A9FD-261FD99ADAD0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D13AB14-12FF-457E-9877-112D952347B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D13AB14-12FF-457E-9877-112D952347B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D13AB14-12FF-457E-9877-112D952347B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D13AB14-12FF-457E-9877-112D952347B8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -30,5 +50,9 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{C088EDCB-E3AB-4127-8B6E-3BEAF941E7E9} = {DD8C9A27-C3A8-4AFE-AF64-A8199A514303}
 		{D976F218-79FB-4BD0-B46C-55D4B257FD64} = {DD8C9A27-C3A8-4AFE-AF64-A8199A514303}
+		{51C29B75-3060-4CF4-8AEA-870D6A33A5A5} = {DD8C9A27-C3A8-4AFE-AF64-A8199A514303}
+		{70EB10F2-45FA-479E-BD55-E950CA96C4C3} = {DD8C9A27-C3A8-4AFE-AF64-A8199A514303}
+		{9B6E0350-4C59-4BC5-A9FD-261FD99ADAD0} = {70EB10F2-45FA-479E-BD55-E950CA96C4C3}
+		{8D13AB14-12FF-457E-9877-112D952347B8} = {70EB10F2-45FA-479E-BD55-E950CA96C4C3}
 	EndGlobalSection
 EndGlobal
