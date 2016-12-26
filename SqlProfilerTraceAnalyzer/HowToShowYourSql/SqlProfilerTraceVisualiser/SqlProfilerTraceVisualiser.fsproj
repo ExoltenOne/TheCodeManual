@@ -60,10 +60,18 @@
     <Compile Include="ChartVisualiser.fs" />
     <Compile Include="FileVisualiser.fs" />
     <Compile Include="ConsoleVisualiser.fs" />
+    <Compile Include="XplotVisualiser.fs" />
+    <Content Include="Google.DataTable.Net.Wrapper.XML" />
+    <EmbeddedResource Include="XplotChart.html" />
+    <Content Include="ghpages-materialize.css" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="FSharp.Charting">
       <HintPath>..\..\packages\FSharp.Charting.0.90.14\lib\net40\FSharp.Charting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Google.DataTable.Net.Wrapper">
+      <HintPath>..\..\..\packages\Google.DataTable.Net.Wrapper.3.1.2.0\lib\Google.DataTable.Net.Wrapper.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="mscorlib" />
@@ -76,10 +84,15 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Numerics" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="XPlot.GoogleCharts">
+      <HintPath>..\..\..\packages\XPlot.GoogleCharts.1.4.2\lib\net45\XPlot.GoogleCharts.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

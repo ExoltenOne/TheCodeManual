@@ -7,12 +7,14 @@ open Argu
 open SqlProfilerTraceVisualiser.ChartVisualiser
 open SqlProfilerTraceVisualiser.ConsoleVisualiser
 open SqlProfilerTraceVisualiser.FileVisualiser
+open SqlProfilerTraceVisualiser.XplotVisualiser
 
 type Arguments =
     | TraceFile of path:string
     | Console
     | File
     | Chart of typeChart:TypeChart
+    | Xplot
 
 with
     interface IArgParserTemplate with
@@ -22,6 +24,7 @@ with
             | Console _ -> "set output to console"
             | Chart _ -> "set output to chart"
             | File _ -> "set output to file"
+            | Xplot _ -> "set output to HTML file with chart"
 
 [<EntryPoint>]
 let main argv = 
@@ -40,6 +43,7 @@ let main argv =
         | Arguments.Console -> printToConsole result
         | Arguments.File -> printToFile result
         | Arguments.Chart typeChart -> printToChart result typeChart
+        | Arguments.Xplot -> printToXplot result
 
     let rec matchResults arguments =
                     match arguments with
