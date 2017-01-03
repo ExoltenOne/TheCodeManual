@@ -19,6 +19,12 @@ Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "SqlProfilerTraceAnalyzer", 
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "SqlProfilerTraceVisualiser", "SqlProfilerTraceAnalyzer\HowToShowYourSql\SqlProfilerTraceVisualiser\SqlProfilerTraceVisualiser.fsproj", "{51C29B75-3060-4CF4-8AEA-870D6A33A5A5}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ProjectFileAnalyzer", "ProjectFileAnalyzer", "{27F08D28-3A4E-4DF8-AF8E-19177C068FC4}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "ProjectFileAnalyzer.DuplicateFinder", "ProjectFileAnalyzer\ProjectFileAnalyzer.DuplicateFinder\ProjectFileAnalyzer.DuplicateFinder.fsproj", "{5B39F2E1-FF74-491B-8CB8-A578AD07AD2A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectFileAnalyzer.DuplicatedFilesTestCase", "ProjectFileAnalyzer\ProjectFileAnalyzer.DuplicatedFilesTestCase\ProjectFileAnalyzer.DuplicatedFilesTestCase.csproj", "{B8047165-6373-4068-A24C-1A8C3D60292F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +51,14 @@ Global
 		{51C29B75-3060-4CF4-8AEA-870D6A33A5A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{51C29B75-3060-4CF4-8AEA-870D6A33A5A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{51C29B75-3060-4CF4-8AEA-870D6A33A5A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B39F2E1-FF74-491B-8CB8-A578AD07AD2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B39F2E1-FF74-491B-8CB8-A578AD07AD2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B39F2E1-FF74-491B-8CB8-A578AD07AD2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B39F2E1-FF74-491B-8CB8-A578AD07AD2A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8047165-6373-4068-A24C-1A8C3D60292F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8047165-6373-4068-A24C-1A8C3D60292F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8047165-6373-4068-A24C-1A8C3D60292F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8047165-6373-4068-A24C-1A8C3D60292F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -57,5 +71,7 @@ Global
 		{C088EDCB-E3AB-4127-8B6E-3BEAF941E7E9} = {1629D76A-B5C9-45D4-821E-082C6707FCB5}
 		{D976F218-79FB-4BD0-B46C-55D4B257FD64} = {1629D76A-B5C9-45D4-821E-082C6707FCB5}
 		{51C29B75-3060-4CF4-8AEA-870D6A33A5A5} = {1629D76A-B5C9-45D4-821E-082C6707FCB5}
+		{5B39F2E1-FF74-491B-8CB8-A578AD07AD2A} = {27F08D28-3A4E-4DF8-AF8E-19177C068FC4}
+		{B8047165-6373-4068-A24C-1A8C3D60292F} = {27F08D28-3A4E-4DF8-AF8E-19177C068FC4}
 	EndGlobalSection
 EndGlobal
