@@ -258,3 +258,6 @@ paket-files/
 # Python Tools for Visual Studio (PTVS)
 __pycache__/
 *.pyc
+
+# Large files
+*H-1B_Disclosure_Data_FY15_Q4.xlsx
