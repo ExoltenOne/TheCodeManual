@@ -6,10 +6,13 @@
     using BenchmarkDotNet.Attributes;
     using BenchmarkDotNet.Order;
     using System.Linq;
+    using System.Text;
 
     [Orderer(SummaryOrderPolicy.FastestToSlowest)]
     [RankColumn]
     [MemoryDiagnoser]
+    [MarkdownExporterAttribute.GitHub]
+    [ClrJob, CoreJob]
     public class StringReplacer
     {
         private readonly Regex pattern = new Regex("[;,\t\r ]|[\n]{2}", RegexOptions.Compiled);
@@ -18,20 +21,43 @@
 
         private readonly string[] separatorsStrings = { " ", ";", ",", "\r", "\t", "\n" };
 
-        [Params(@"this;is,\ra\t\n\n\ntest")]
-        public string Value { get; set; }
+        public string Value { get; } = "this;is,\ra\t\n\n\ntest";
 
         [Benchmark(Baseline = true, Description = "zgirod - MultipleReplaceMethod")]
         public string MultipleReplaceMethod()
         {
-            return this.Value.Replace(';', '\n').Replace(',', '\n').Replace('\r', '\n').Replace('\t', '\n')
+            var result = this.Value.Replace(';', '\n').Replace(',', '\n').Replace('\r', '\n').Replace('\t', '\n')
                 .Replace(' ', '\n').Replace("\n\n", "\n");
+
+            //while(result.Contains("\n\n"))
+            //{
+            //    result = result.Replace("\n\n", "\n");
+            //}
+
+            return result;
         }
 
-        [Benchmark(Description = "johnluetke - Regex")]
+        [Benchmark(Description = "kmadof - ReplaceByStringBuilder")]
+        public string ReplaceByStringBuilder()
+        {
+            var builder = new StringBuilder(this.Value);
+            builder.Replace(';', '\n').Replace(',', '\n').Replace('\r', '\n').Replace('\t', '\n')
+                .Replace(' ', '\n').Replace("\n\n", "\n");
+
+            return builder.ToString();
+        }
+
+        //[Benchmark(Description = "johnluetke - Regex")]
         public string Regex()
         {
-            return this.pattern.Replace(this.Value, "\n");
+            var str = this.pattern.Replace(this.Value, "\n");
+
+            //while (str.Contains("\n\n"))
+            //{
+            //    str = str.Replace("\n\n", "\n");
+            //}
+
+            return str;
         }
 
         [Benchmark(Description = "Paul Walls - ReplaceUsingSplit")]
@@ -41,40 +67,101 @@
             return string.Join("\n", temp);
         }
 
-        [Benchmark(Description = "dodgy_coder - ReplaceUsingAggregate")]
+        //[Benchmark(Description = "dodgy_coder - ReplaceUsingAggregate")]
         public string ReplaceUsingAggregate()
         {
-            return this.separators.Aggregate(this.Value, (c1, c2) => c1.Replace(c2, '\n'));
+            var str = this.separators.Aggregate(this.Value, (c1, c2) => c1.Replace(c2, '\n'));
+
+            //while (str.Contains("\n\n"))
+            //{
+            //    str = str.Replace("\n\n", "\n");
+            //}
+
+            return str;
         }
 
-        [Benchmark(Description = "John Whiter - ReplaceUsingStringBuilderAndCharArray")]
+        //[Benchmark(Description = "John Whiter - ReplaceUsingStringBuilderAndCharArray")]
         public string ReplaceUsingStringBuilderAndCharArray()
         {
-            return StringUtils.ReplaceAny(this.Value, '\n', this.separators);
+            var str = StringUtils.ReplaceAny(this.Value, '\n', this.separators);
+
+            //while (str.Contains("\n\n"))
+            //{
+            //    str = str.Replace("\n\n", "\n");
+            //}
+
+            return str;
         }
 
-        [Benchmark(Description = "Fab - ReplaceUsingStringBuilderAndHashSet")]
+        //[Benchmark(Description = "Fab - ReplaceUsingStringBuilderAndHashSet")]
         public string ReplaceUsingStringBuilderAndHashSet()
         {
-            return StringUtils.MultiReplace(this.Value, this.separators, '\n');
+            var str = StringUtils.MultiReplace(this.Value, this.separators, '\n');
+
+            //while (str.Contains("\n\n"))
+            //{
+            //    str = str.Replace("\n\n", "\n");
+            //}
+
+            return str;
         }
 
-        [Benchmark(Description = "Daniel Székely - ReplaceInForeach")]
+        //[Benchmark(Description = "Daniel Székely - ReplaceInForeach")]
         public string ReplaceInForeach()
         {
             var str = this.Value;
             foreach (var singleChar in this.separators)
             {
-                str = str.Replace(singleChar, '_');
+                str = str.Replace(singleChar, '\n');
             }
+
+            //while (str.Contains("\n\n"))
+            //{
+            //    str = str.Replace("\n\n", "\n");
+            //}
 
             return str;
         }
 
-        [Benchmark(Description = "sɐunıɔןɐqɐp - ReplaceUsingStringBuilderAndIndexOf")]
+        //[Benchmark(Description = "sɐunıɔןɐqɐp - ReplaceUsingStringBuilderAndIndexOf")]
         public string ReplaceUsingStringBuilderAndIndexOf()
         {
-            return this.Value.ReplaceAll(this.separatorsStrings, "\n");
+            var str = this.Value.ReplaceAll(this.separatorsStrings, "\n");
+
+            //while (str.Contains("\n\n"))
+            //{
+            //    str = str.Replace("\n\n", "\n");
+            //}
+
+            return str;
+        }
+
+        //[Benchmark(Description = "kmadof - UnsafeReplace")]
+        public unsafe string UnsafeReplace()
+        {
+            var value = string.Copy(this.Value);
+
+            fixed (char* pfixed = value)
+            {
+                for (char* p = pfixed; *p != 0; p++)
+                {
+                    foreach(var oldChar in this.separators)
+                    {
+                        if(*p == oldChar)
+                        {
+                            *p = '\n';
+                            break;
+                        }
+                    }
+                }
+            }
+
+            //while (value.Contains("\n\n"))
+            //{
+            //    value = value.Replace("\n\n", "\n");
+            //}
+
+            return value;
         }
     }
 }

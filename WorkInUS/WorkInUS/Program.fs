@@ -9,7 +9,7 @@ open FSharp.Data
 open FSharp.ExcelProvider
 
 // The file you get from https://www.foreignlaborcert.doleta.gov/docs/py2015q4/H-1B_Disclosure_Data_FY15_Q4.xlsx
-type Visa = ExcelFile<"H-1B_Disclosure_Data_FY15_Q4.xlsx">
+type Visa = ExcelFile<"H-1B_Disclosure_Data_FY15_Q4_sample.xlsx">
 type Cities = CsvProvider<"worldcitiespopussample.txt">
 
 type VisaGroupRequest = { CityName:String; Region:String; Salary:decimal; OffersNumber:int  }

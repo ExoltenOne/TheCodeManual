@@ -56,31 +56,28 @@
   <ItemGroup>
     <Compile Include="AssemblyInfo.fs" />
     <None Include="App.config" />
-    <Content Include="packages.config" />
     <Compile Include="ChartVisualiser.fs" />
     <Compile Include="FileVisualiser.fs" />
     <Compile Include="ConsoleVisualiser.fs" />
     <Compile Include="XplotVisualiser.fs" />
-    <Content Include="Google.DataTable.Net.Wrapper.XML" />
     <EmbeddedResource Include="XplotChart.html" />
     <Content Include="ghpages-materialize.css" />
+    <Content Include="packages.config" />
+    <Content Include="Google.DataTable.Net.Wrapper.XML" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="FSharp.Charting">
-      <HintPath>..\..\packages\FSharp.Charting.0.90.14\lib\net40\FSharp.Charting.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\..\..\packages\FSharp.Charting.0.90.14\lib\net40\FSharp.Charting.dll</HintPath>
     </Reference>
     <Reference Include="Google.DataTable.Net.Wrapper">
       <HintPath>..\..\..\packages\Google.DataTable.Net.Wrapper.3.1.2.0\lib\Google.DataTable.Net.Wrapper.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="mscorlib" />
     <Reference Include="FSharp.Core, Version=$(TargetFSharpCoreVersion), Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <Private>True</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json">
-      <HintPath>..\..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\..\..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -91,7 +88,6 @@
     <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="XPlot.GoogleCharts">
       <HintPath>..\..\..\packages\XPlot.GoogleCharts.1.4.2\lib\net45\XPlot.GoogleCharts.dll</HintPath>
-      <Private>True</Private>
     </Reference>
   </ItemGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

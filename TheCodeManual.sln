@@ -33,6 +33,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "StringReplacer", "StringRep
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StringReplacer", "StringReplacer\StringReplacer.csproj", "{C912555C-3A64-4C31-9033-787BD84759B3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StringReplacer.UnitTests", "StringReplacer.UnitTests\StringReplacer.UnitTests.csproj", "{96FECC68-96D2-42E5-9874-A29C3852D7F7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,6 +77,10 @@ Global
 		{C912555C-3A64-4C31-9033-787BD84759B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C912555C-3A64-4C31-9033-787BD84759B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C912555C-3A64-4C31-9033-787BD84759B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{96FECC68-96D2-42E5-9874-A29C3852D7F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96FECC68-96D2-42E5-9874-A29C3852D7F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96FECC68-96D2-42E5-9874-A29C3852D7F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96FECC68-96D2-42E5-9874-A29C3852D7F7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -91,6 +97,7 @@ Global
 		{B8047165-6373-4068-A24C-1A8C3D60292F} = {27F08D28-3A4E-4DF8-AF8E-19177C068FC4}
 		{41BBCD7E-CEB9-4F61-BE48-7FCF9C897FB6} = {880E01ED-8AFE-4407-AB79-8B4A47524D60}
 		{C912555C-3A64-4C31-9033-787BD84759B3} = {8DEBF03D-E890-4D3A-8356-9126ABD93BC4}
+		{96FECC68-96D2-42E5-9874-A29C3852D7F7} = {8DEBF03D-E890-4D3A-8356-9126ABD93BC4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B805560C-AAEB-4AD7-BCE4-F58AB7F293AD}
